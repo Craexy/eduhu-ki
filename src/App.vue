@@ -1,5 +1,5 @@
 <template>
-  <a href="/" class="btn btn-primary m-3">Zurück zur Startseite</a>
+  <a href="/" class="btn btn-primary m-3">Zur Startseite</a>
   <div class="container">
     <router-view />
   </div>
