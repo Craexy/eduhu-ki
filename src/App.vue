@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/" class="btn btn-primary m-3">Home</router-link>
+  <router-link to="/" class="btn btn-primary m-3">Home Test</router-link>
   <a href="/" class="btn btn-primary m-3">Zur Startseite</a>
   <div class="container">
     <router-view />
