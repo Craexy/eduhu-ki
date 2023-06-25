@@ -213,9 +213,6 @@ h1 {
     border-radius: 0;
   }
 }
-.unterrichtsplaner-container {
-
-}
 .messageBox {
   padding: 16px;
   flex-grow: 1;
