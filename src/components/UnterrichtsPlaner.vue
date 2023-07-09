@@ -109,6 +109,7 @@ export default {
         role: 'user',
         content: message,
       });
+      console.log(process.env.VUE_APP_BACKEND_URL);
       await axios
         .post(process.env.VUE_APP_BACKEND_URL, {
           chatHistory: this.messages,
