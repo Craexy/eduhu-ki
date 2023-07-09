@@ -116,7 +116,7 @@ export default {
         content: message,
       });
       await axios
-        .post('http://localhost:3000/unterrichtsplaner', {
+        .post(process.env.VUE_APP_BACKEND_URL, {
           chatHistory: this.messages,
         })
        .then((response) => {

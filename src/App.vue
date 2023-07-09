@@ -1,12 +1,10 @@
 <template>
-  <router-link to="/" class="btn btn-primary m-3">Home Test</router-link>
-  <a href="/" class="btn btn-primary m-3">Zur Startseite</a>
-  <div class="container">
-    <router-view />
-  </div>
+  <NavBar></NavBar>
+  <router-view />
 </template>
 
 <script>
+import NavBar from './components/NavBar.vue';
 
 export default {
   name: 'App',
@@ -16,7 +14,7 @@ export default {
     };
   },
   components: {
-    
+    NavBar
   },
 };
 </script>
