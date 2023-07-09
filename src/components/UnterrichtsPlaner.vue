@@ -111,7 +111,7 @@ export default {
       });
       console.log(process.env.VUE_APP_BACKEND_URL);
       await axios
-        .post(process.env.VUE_APP_BACKEND_URL, {
+        .post(process.env.VUE_APP_BACKEND_URL + "/unterrichtsplaner", {
           chatHistory: this.messages,
         })
         .then((response) => {
