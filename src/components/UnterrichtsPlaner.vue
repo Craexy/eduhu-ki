@@ -57,6 +57,7 @@
             </div>
           </div>
         </template>
+        <loading v-model:active="loading" :can-cancel="false" :is-full-page="fullPage" />
       </div>
       <div class="inputContainer">
         <input v-model="currentMessage" type="text" class="messageInput" placeholder="Stell mir eine Frage..."
@@ -71,13 +72,27 @@
 
 <script>
 import axios from 'axios';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
 export default {
   name: 'UnterrichtsPlaner',
   data() {
     return {
       messages: [],
+      loading: false,
+      inputText: "",
+      inputAge: 0,
+      inputFlesch: 0,
+      inputLearningType: "",
+      inputSchoolType: "",
+      inputSize: "",
+      currentMessage: "",
+      fullPage: true
     };
+  },
+  components: {
+    Loading
   },
   methods: {
     async sendMessage(message) {
@@ -109,7 +124,7 @@ export default {
         role: 'user',
         content: message,
       });
-      console.log(process.env.VUE_APP_BACKEND_URL);
+      this.loading = true;
       await axios
         .post(process.env.VUE_APP_BACKEND_URL + "/unterrichtsplaner", {
           chatHistory: this.messages,
@@ -120,8 +135,10 @@ export default {
             role: 'assistant',
             content: response.data.data, // Access the 'data' property of the response object
           });
+        })
+        .finally(() => {
+          this.loading = false;
         });
-
     },
   },
 };
@@ -162,6 +179,9 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  white-space: pre-line;
+  white-space: pre-wrap;
+
 }
 
 .messageFromUser,
