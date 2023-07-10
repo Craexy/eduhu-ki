@@ -4,7 +4,7 @@
       <h2>Anfrage</h2>
       <div class="form-group">
         <label for="inputText">Umzuwandelnder Text:</label>
-        <textarea class="form-control" id="inputText" rows="3" placeholder="Umzuwandelnder Text"
+        <textarea class="form-control" id="inputText" ref="inputText" rows="3" placeholder="Umzuwandelnder Text"
           v-model="inputText"></textarea>
       </div>
       <div class="form-group">
@@ -88,7 +88,8 @@ export default {
       inputSchoolType: "",
       inputSize: "",
       currentMessage: "",
-      fullPage: true
+      fullPage: true,
+      tx: document.getElementsByTagName("textarea")
     };
   },
   components: {
@@ -140,7 +141,18 @@ export default {
           this.loading = false;
         });
     },
+    onInput() {
+      this.$refs.inputText.style.height = 0;
+      this.$refs.inputText.style.height = (this.$refs.inputText.scrollHeight) + "px";
+    }
   },
+  mounted() {
+    this.$refs.inputText.setAttribute("style", "height:" + (this.$refs.inputText.scrollHeight) + "px;overflow-y:hidden;");
+    this.$refs.inputText.addEventListener('input', this.onInput);
+  },
+  unmounted() {
+    this.$el.removeEventListener('input', this.onInput);
+  }
 };
 </script>
 
